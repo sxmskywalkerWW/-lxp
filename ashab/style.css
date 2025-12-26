@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #64A9B7;
+    color: #555;
+    overflow-x: hidden;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #1e7bbd;
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.logo-text {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.header-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    background-color: #ccc;
+    border: 1px solid #999;
+    border-radius: 3px;
+}
+
+.icon.active {
+    background-color: #fff;
+    border: 2px solid #1e7bbd;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+}
+
+/* Main Content Styles */
+.main-content {
+    position: relative;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background-shape {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: rotate(15deg);
+    z-index: -1;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 800px;
+}
+
+.card {
+    background-color: white;
+    border: 2px solid #64A9B7;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+.card-number {
+    font-size: 36px;
+    font-weight: bold;
+    color: #64A9B7;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+}
