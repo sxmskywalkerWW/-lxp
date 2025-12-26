@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 8 Start Screen — Two Rows</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Start</h1>
+        <div class="user">
+            <span>User</span>
+            <div class="user-avatar">U</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="start-screen" id="startScreen">
+            <div class="tile"><div class="tile-icon">✉️</div><div class="tile-title">Mail</div></div>
+            <div class="tile"><div class="tile-icon">📅</div><div class="tile-title">Calendar</div></div>
+            <div class="tile"><div class="tile-icon">🌐</div><div class="tile-title">IE</div></div>
+            <div class="tile"><div class="tile-icon">🛍️</div><div class="tile-title">Store</div></div>
+            <div class="tile"><div class="tile-icon">🌄</div><div class="tile-title">Bing</div></div>
+            <div class="tile"><div class="tile-icon">👥</div><div class="tile-title">People</div></div>
+            <div class="tile"><div class="tile-icon">🖼️</div><div class="tile-title">Photos</div></div>
+            <div class="tile"><div class="tile-icon">🗺️</div><div class="tile-title">Maps</div></div>
+            <div class="tile"><div class="tile-icon">☁️</div><div class="tile-title">SkyDrive</div></div>
+            <div class="tile"><div class="tile-icon">🧳</div><div class="tile-title">Travel</div></div>
+            <div class="tile"><div class="tile-icon">💬</div><div class="tile-title">Messaging</div></div>
+            <div class="tile"><div class="tile-icon">📈</div><div class="tile-title">Finance</div></div>
+            <div class="tile"><div class="tile-icon">🏆</div><div class="tile-title">Sports</div></div>
+            <div class="tile"><div class="tile-icon">🎮</div><div class="tile-title">Games</div></div>
+            <div class="tile"><div class="tile-icon">📷</div><div class="tile-title">Camera</div></div>
+            <div class="tile"><div class="tile-icon">🌼</div><div class="tile-title">Desktop</div></div>
+            <div class="tile"><div class="tile-icon">☀️</div><div class="tile-title">Weather</div></div>
+            <div class="tile"><div class="tile-icon">📰</div><div class="tile-title">News</div></div>
+            <div class="tile"><div class="tile-icon">🎧</div><div class="tile-title">Music</div></div>
+            <div class="tile"><div class="tile-icon">🎬</div><div class="tile-title">Video</div></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const screen = document.getElementById('startScreen');
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            screen.addEventListener('mousedown', (e) => {
+                isDown = true;
+                startX = e.pageX - screen.offsetLeft;
+                scrollLeft = screen.scrollLeft;
+                screen.style.cursor = 'grabbing';
+            });
+
+            screen.addEventListener('mouseleave', () => {
+                isDown = false;
+                screen.style.cursor = 'grab';
+            });
+
+            screen.addEventListener('mouseup', () => {
+                isDown = false;
+                screen.style.cursor = 'grab';
+            });
+
+            screen.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - screen.offsetLeft;
+                const walk = (x - startX) * 2;
+                screen.scrollLeft = scrollLeft - walk;
+            });
+
+            screen.addEventListener('touchstart', (e) => {
+                isDown = true;
+                startX = e.touches[0].pageX - screen.offsetLeft;
+                scrollLeft = screen.scrollLeft;
+            });
+
+            screen.addEventListener('touchend', () => {
+                isDown = false;
+            });
+
+            screen.addEventListener('touchmove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.touches[0].pageX - screen.offsetLeft;
+                const walk = (x - startX) * 2;
+                screen.scrollLeft = scrollLeft - walk;
+            });
+        });
+    </script>
+</body>
+</html>
